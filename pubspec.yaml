@@ -1,0 +1,164 @@
+name: saqrelfirgany
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Localization support for Flutter.
+  flutter_localizations:
+    sdk: flutter
+  # Internationalization library.
+  intl: 0.18.1
+  # Default set of icon assets.
+  cupertino_icons: ^1.0.2
+  # Navigation package.
+  go_router: ^10.0.0
+  # URL strategy for web apps.
+  url_strategy: ^0.2.0
+  # Carousel slider widget.
+  carousel_slider: ^4.2.1
+  # Smooth page indicators for carousel.
+  smooth_page_indicator: ^1.1.0
+  # Animated text kit for fancy text animations.
+  animated_text_kit: ^4.2.2
+  # Lottie for vector animations.
+  lottie: ^2.6.0
+  # Image picker plugin.
+  image_picker: ^1.0.4
+  # OTP fields for authentication.
+  otp_pin_field: ^1.2.2
+  # Shared preferences for persistent storage.
+  shared_preferences: ^2.2.1
+  # Pin code input fields.
+  pin_code_fields: ^7.4.0
+  # HTTP client for Dart.
+  dio: ^5.3.3
+  # Service locator for dependency injection.
+  get_it: ^7.6.4
+  # Either type for error handling.
+  either_dart: ^1.0.0
+  # Loading spinners.
+  flutter_spinkit: ^5.1.0
+  # Equatable for value comparison.
+  equatable: ^2.0.5
+  # Bloc pattern for state management.
+  flutter_bloc: ^8.1.3
+  # Loading animation widgets.
+  loading_animation_widget: ^1.2.0+4
+  # Smart dialog for better user interaction.
+  flutter_smart_dialog: ^4.9.4
+  # Toast messages.
+  fluttertoast: ^8.2.2
+  # Utility for renaming the app.
+  rename: ^3.0.1
+  # SVG rendering.
+  flutter_svg: 2.0.9
+  # Cached network images.
+  cached_network_image: 3.3.0
+  # Country picker dropdown.
+  country_pickers: ^2.0.0
+  # Device preview for UI testing.
+  device_preview: ^1.1.0
+  # Icon generation for launcher.
+  flutter_launcher_icons: ^0.13.1
+  # HTML rendering widget.
+  flutter_widget_from_html: ^0.14.9
+  # URL launcher plugin.
+  url_launcher: ^6.1.14
+  # Firebase core for Firebase services.
+  firebase_core: 2.24.2
+  # Firebase analytics.
+  firebase_analytics: 10.7.4
+  # Firebase messaging for push notifications.
+  firebase_messaging: 14.7.10
+  # Local notifications plugin.
+  flutter_local_notifications: 9.8.0+1
+  # Permission handler.
+  permission_handler: 11.0.1
+  # App settings access.
+  app_settings: 5.1.1
+  # Google API availability checker.
+  google_api_availability: 5.0.0
+  # Device info plugin.
+  device_info_plus: 9.1.1
+  # Pretty logger for Dio.
+  pretty_dio_logger: ^1.3.1
+
+  # Change app package name utility.
+  #  flutter pub run change_app_package_name:main com.sds.storekeeper
+  change_app_package_name: ^1.1.0
+  qr_code_scanner: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# flutter pub run flutter_launcher_icons -f:main
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/login/login_OnxRestaurant_Logo.svg"
+  background_color: "#FFFFFF"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/login/login_OnxRestaurant_Logo.svg"
+    background_color: "#FFFFFF"
+    theme_color: "#FFFFFF"
+  windows:
+    generate: true
+    image_path: "assets/login/login_OnxRestaurant_Logo.svg"
+    background_color: "#FFFFFF"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/login/login_OnxRestaurant_Logo.svg"
+    background_color: "#FFFFFF"
+
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/images/
+    - assets/lottie/
+    - assets/contacts_icons/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/PoppinsRegular.ttf
+          weight: 400
+        - asset: assets/fonts/PoppinsMedium.ttf
+          weight: 500
+        - asset: assets/fonts/PoppinsSemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/PoppinsBold.ttf
+          weight: 700
+        - asset: assets/fonts/PoppinsLight.ttf
+          weight: 300
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/InterRegular.ttf
+          weight: 400
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/RobotoRegular.ttf
+          weight: 400
+    - family: SF Arabic Regular
+      fonts:
+        - asset: assets/fonts/SFArabicRegular.ttf
