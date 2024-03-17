@@ -8,16 +8,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storekeeper => 'Storekeeper';
 
   @override
-  String get welcomeLogin => 'Welcome to the storekeeper';
+  String get welcomeLogin => 'Welcome Back!';
 
   @override
-  String get welcomeLogin2 => 'Step into the world of organized excellence. We\'re glad you\'re here!';
+  String get logBackIntoYourAccount => 'Log back into your account';
 
   @override
-  String get welcomeLogin3 => 'Welcome to the hub of efficiency, where every item has its place. Let\'s get started!';
+  String get userID => 'User ID';
 
   @override
-  String get descriptionLogin => 'Your journey through the aisles of success begins here. Welcome aboard!';
+  String get password => 'Password';
+
+  @override
+  String get login => 'Log in';
 
   @override
   String get goCashless => 'Go cashless, promote healthy spending.';
@@ -62,16 +65,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get userName => 'User Name';
 
   @override
-  String get password => 'Password';
-
-  @override
   String get rememberMe => 'Remember me';
 
   @override
   String get forgetPassword => 'Forget Password';
-
-  @override
-  String get login => 'Login';
 
   @override
   String get enterYourPhoneNumber => 'Enter your phone number';

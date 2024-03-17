@@ -5,19 +5,22 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get storekeeper => 'امين المخزن';
+  String get storekeeper => 'Storekeeper';
 
   @override
-  String get welcomeLogin => 'مرحبًا بك في امين المخزن';
+  String get welcomeLogin => 'مرحبًا بعودتك!';
 
   @override
-  String get welcomeLogin2 => 'أدخل إلى عالم التميز المنظم. نحن سعداء بوجودك هنا!';
+  String get logBackIntoYourAccount => 'قم بتسجيل الدخول مرة أخرى إلى حسابك';
 
   @override
-  String get welcomeLogin3 => 'مرحبًا بك في مركز الكفاءة، حيث لكل شيء مكانه. هيا بنا نبدأ!';
+  String get userID => 'رقم المستخدم';
 
   @override
-  String get descriptionLogin => 'رحلتك عبر ممرات النجاح تبدأ من هنا. أهلاً وسهلاً!';
+  String get password => 'كلمة المرور';
+
+  @override
+  String get login => 'تسجيل الدخول';
 
   @override
   String get goCashless => 'اتجه لعدم استخدام النقد، وتعزيز الإنفاق الصحي.';
@@ -62,16 +65,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get userName => 'اسم المستخدم';
 
   @override
-  String get password => 'كلمه السر';
-
-  @override
   String get rememberMe => 'تذكرني';
 
   @override
   String get forgetPassword => 'نسيت كلمة المرور';
-
-  @override
-  String get login => 'تسجيل الدخول';
 
   @override
   String get enterYourPhoneNumber => 'أدخل رقم هاتفك';

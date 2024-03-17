@@ -1,9 +1,9 @@
 {
-    "welcomeLogin": "مرحبًا بك في امين المخزن",
-    "storekeeper": "امين المخزن",
-    "welcomeLogin2": "أدخل إلى عالم التميز المنظم. نحن سعداء بوجودك هنا!",
-    "welcomeLogin3": "مرحبًا بك في مركز الكفاءة، حيث لكل شيء مكانه. هيا بنا نبدأ!",
-    "descriptionLogin": "رحلتك عبر ممرات النجاح تبدأ من هنا. أهلاً وسهلاً!",
+    "welcomeLogin": "مرحبًا بعودتك!",
+    "logBackIntoYourAccount":"قم بتسجيل الدخول مرة أخرى إلى حسابك",
+    "userID":"رقم المستخدم",
+    "password":"كلمه السر",
+    "login": "تسجيل الدخول",
 
     "enterInvoiceNumber": "أدخل رقم الفاتورة الخاصة بك",
     "invoiceNumber": "رقم الفاتورة",
@@ -24,7 +24,6 @@
     "password": "كلمة المرور",
     "rememberMe": "تذكرني",
     "forgetPassword": "نسيت كلمة المرور؟",
-    "login": "تسجيل الدخول",
     "enterYourPhoneNumber": "أدخل رقم هاتفك",
     "weWillSendYouVerificationCode": "سنرسل لك رمز التحقق",
     "phoneNumber": "رقم الهاتف",
@@ -239,7 +238,6 @@
     "bill":"الفاتورة",
 
     "name":"الاسم",
-    "password":"كلمه السر",
     "change":"تغيير",
     "email":"البريد الإلكتروني",
     "phone":"رقم الهاتف",
@@ -252,7 +250,6 @@
     "logInNow":"سجل دخولك الآن",
     "phoneOrEmail":"رقم الهاتف / البريد الإلكتروني",
     "forgetPassword":"هل نسيت كلمة المرور الخاصة بك ؟",
-    "login":"تسجيل الدخول",
     "haveNoAcc":"ليس لديك حساب معنا؟",
     "registerNow":"سجل الان",
     "register":"تسجيل",

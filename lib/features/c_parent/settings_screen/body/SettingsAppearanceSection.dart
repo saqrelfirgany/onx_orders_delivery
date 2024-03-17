@@ -53,42 +53,43 @@ class SettingsAppearanceSection extends StatelessWidget {
               Text(l10n.changeLanguage, style: theme.textTheme.titleMedium),
               Spacer(),
               DropdownButton<String>(
-                  value: languageCubit.state.locale.toString(),
-                  onChanged: (String? newLanguage) async {
-                    // return;
-                    log('newLanguage::$newLanguage');
-                    if (newLanguage != null) {
-                      await languageCubit.changeLanguage(newLanguage);
-                      context.go(AppRouteName.splashScreenRoute);
-                    }
-                  },
-                  underline: SizedBox(),
-                  icon: CustomImageView(
-                    imagePath: ImageConstant.imgArrowDown,
-                    height: 18.adaptSize,
-                    width: 18.adaptSize,
-                    margin: EdgeInsets.only(
-                      left: 8.h,
-                      top: 3.v,
-                      bottom: 3.v,
+                value: languageCubit.state.locale.toString(),
+                onChanged: (String? newLanguage) async {
+                  // return;
+                  log('newLanguage::$newLanguage');
+                  if (newLanguage != null) {
+                    await languageCubit.changeLanguage(newLanguage);
+                    context.go(AppRouteName.splashScreenRoute);
+                  }
+                },
+                underline: SizedBox(),
+                icon: CustomImageView(
+                  imagePath: ImageConstant.imgArrowDown,
+                  height: 18.adaptSize,
+                  width: 18.adaptSize,
+                  margin: EdgeInsets.only(
+                    left: 8.h,
+                    top: 3.v,
+                    bottom: 3.v,
+                  ),
+                ),
+                items: [
+                  DropdownMenuItem<String>(
+                    value: 'en',
+                    child: Text(
+                      l10n.english,
+                      style: CustomTextStyles.titleSmallGray500,
                     ),
                   ),
-                  items: [
-                    DropdownMenuItem<String>(
-                      value: 'en',
-                      child: Text(
-                        l10n.english,
-                        style: CustomTextStyles.titleSmallGray500,
-                      ),
+                  DropdownMenuItem<String>(
+                    value: 'ar',
+                    child: Text(
+                      l10n.arabic,
+                      style: CustomTextStyles.titleSmallGray500,
                     ),
-                    DropdownMenuItem<String>(
-                      value: 'ar',
-                      child: Text(
-                        l10n.arabic,
-                        style: CustomTextStyles.titleSmallGray500,
-                      ),
-                    ),
-                  ]),
+                  ),
+                ],
+              ),
             ],
           ),
         ],

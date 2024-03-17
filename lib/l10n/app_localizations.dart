@@ -102,26 +102,32 @@ abstract class AppLocalizations {
   /// No description provided for @welcomeLogin.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to the storekeeper'**
+  /// **'Welcome Back!'**
   String get welcomeLogin;
 
-  /// No description provided for @welcomeLogin2.
+  /// No description provided for @logBackIntoYourAccount.
   ///
   /// In en, this message translates to:
-  /// **'Step into the world of organized excellence. We\'re glad you\'re here!'**
-  String get welcomeLogin2;
+  /// **'Log back into your account'**
+  String get logBackIntoYourAccount;
 
-  /// No description provided for @welcomeLogin3.
+  /// No description provided for @userID.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to the hub of efficiency, where every item has its place. Let\'s get started!'**
-  String get welcomeLogin3;
+  /// **'User ID'**
+  String get userID;
 
-  /// No description provided for @descriptionLogin.
+  /// No description provided for @password.
   ///
   /// In en, this message translates to:
-  /// **'Your journey through the aisles of success begins here. Welcome aboard!'**
-  String get descriptionLogin;
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get login;
 
   /// No description provided for @goCashless.
   ///
@@ -207,12 +213,6 @@ abstract class AppLocalizations {
   /// **'User Name'**
   String get userName;
 
-  /// No description provided for @password.
-  ///
-  /// In en, this message translates to:
-  /// **'Password'**
-  String get password;
-
   /// No description provided for @rememberMe.
   ///
   /// In en, this message translates to:
@@ -224,12 +224,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Forget Password'**
   String get forgetPassword;
-
-  /// No description provided for @login.
-  ///
-  /// In en, this message translates to:
-  /// **'Login'**
-  String get login;
 
   /// No description provided for @enterYourPhoneNumber.
   ///

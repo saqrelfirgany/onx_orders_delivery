@@ -5,8 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 part 'localization_state.dart';
 
 class LanguageCubit extends Cubit<ChangeLocaleState> {
-  LanguageCubit() : super(ChangeLocaleState(locale: const Locale('ar')));
-  String local = 'ar';
+  LanguageCubit() : super(ChangeLocaleState(locale: const Locale('en')));
+  String local = 'en';
 
   Future<void> getSavedLanguage() async {
     final String cachedLanguageCode = await getCurrentLanguage();
@@ -26,8 +26,8 @@ class LanguageCubit extends Cubit<ChangeLocaleState> {
       local = cachedLanguageCode;
       return cachedLanguageCode;
     } else {
-      local = "ar";
-      return "ar";
+      local = "en";
+      return "en";
     }
   }
 

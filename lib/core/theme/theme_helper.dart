@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:saqrelfirgany/core/utils/size_utils.dart';
 
+import 'colors.dart';
+
 String _appTheme = "primary";
 
 /// Helper class for managing themes and colors.
@@ -52,9 +54,9 @@ class ThemeHelper {
       scaffoldBackgroundColor: appTheme.whiteA700,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: colorScheme.primary,
+          backgroundColor: mainColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.h),
+            borderRadius: BorderRadius.circular(22.h),
           ),
           visualDensity: const VisualDensity(
             vertical: -4,

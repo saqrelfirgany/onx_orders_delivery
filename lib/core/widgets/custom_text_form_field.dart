@@ -29,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     this.filled = true,
     this.validator,
     this.enabled,
+    this.textAlign,
   }) : super(
           key: key,
         );
@@ -73,6 +74,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
 
   final bool? filled;
+  final TextAlign? textAlign;
 
   final FormFieldValidator<String>? validator;
 
@@ -94,6 +96,7 @@ class CustomTextFormField extends StatelessWidget {
           autofocus: autofocus!,
           style: textStyle ?? CustomTextStyles.bodyLargePrimary,
           obscureText: obscureText!,
+          textAlign: textAlign ?? TextAlign.center,
           textInputAction: textInputAction,
           enabled: enabled,
           keyboardType: textInputType,
@@ -121,7 +124,7 @@ class CustomTextFormField extends StatelessWidget {
         filled: filled,
         border: borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.h),
+              borderRadius: BorderRadius.circular(22.h),
               borderSide: BorderSide(
                 color: appTheme.gray200,
                 width: 1,
@@ -129,7 +132,7 @@ class CustomTextFormField extends StatelessWidget {
             ),
         enabledBorder: borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.h),
+              borderRadius: BorderRadius.circular(22.h),
               borderSide: BorderSide(
                 color: appTheme.gray200,
                 width: 1,
@@ -137,7 +140,7 @@ class CustomTextFormField extends StatelessWidget {
             ),
         focusedBorder: borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.h),
+              borderRadius: BorderRadius.circular(22.h),
               borderSide: BorderSide(
                 color: appTheme.gray200,
                 width: 1,
@@ -152,6 +155,7 @@ extension TextFormFieldStyleHelper on CustomTextFormField {
         borderRadius: BorderRadius.circular(8.h),
         borderSide: BorderSide.none,
       );
+
   static OutlineInputBorder get fillOnErrorContainer => OutlineInputBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(
@@ -160,6 +164,7 @@ extension TextFormFieldStyleHelper on CustomTextFormField {
         ),
         borderSide: BorderSide.none,
       );
+
   static OutlineInputBorder get fillPrimary => OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.h),
         borderSide: BorderSide.none,

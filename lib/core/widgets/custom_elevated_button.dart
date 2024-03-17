@@ -67,7 +67,7 @@ class CustomElevatedButton extends BaseButton {
             ),
             Text(
               text,
-              style: buttonTextStyle ?? CustomTextStyles.titleMediumWhiteA70018,
+              style: buttonTextStyle ?? CustomTextStyles.title14WhiteColorMedium,
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(start: 4.h),

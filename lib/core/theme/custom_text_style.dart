@@ -2,11 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:saqrelfirgany/core/theme/theme_helper.dart';
 import 'package:saqrelfirgany/core/utils/size_utils.dart';
 
+import 'colors.dart';
+
 /// A collection of pre-defined text styles for customizing text appearance,
 /// categorized by different font families and weights.
 /// Additionally, this class includes extensions on [TextStyle] to easily apply specific font families to text.
 
+/// MontserratSemiBold
+/// MontserratMedium
+/// MontserratRegular
 class CustomTextStyles {
+  static get title29MainColorSemiBold {
+    return TextStyle(
+      fontSize: 29.fSize,
+      color: mainColor,
+      fontFamily: 'MontserratSemiBold',
+    );
+  }
+
+  static get title12MainColorMedium {
+    return TextStyle(
+      fontSize: 12.fSize,
+      color: mainColor,
+      fontFamily: 'MontserratMedium',
+    );
+  }
+
+  static get title14BlackColorRegular {
+    return TextStyle(
+      fontSize: 14.fSize,
+      color: blackColor,
+      fontFamily: 'MontserratRegular',
+    );
+  }
+
+  static get title14WhiteColorMedium {
+    return TextStyle(
+      fontSize: 14.fSize,
+      color: whiteColor,
+      fontFamily: 'MontserratMedium',
+    );
+  }
+
   // Body text style
   static get headlineSmallSemiBold => theme.textTheme.headlineSmall!.copyWith(
         fontWeight: FontWeight.w600,
