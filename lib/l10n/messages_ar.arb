@@ -4,6 +4,8 @@
     "userID":"رقم المستخدم",
     "password":"كلمه السر",
     "login": "تسجيل الدخول",
+    "userIDRequired":"رقم المستخدم مطلوب",
+    "passwordError":"كلمه السر مطلوبة",
 
     "enterInvoiceNumber": "أدخل رقم الفاتورة الخاصة بك",
     "invoiceNumber": "رقم الفاتورة",
@@ -269,7 +271,6 @@
     "newPassword":"كلمة المرور الجديدة",
     "confirmNewPassword":"تأكيد كلمة المرور الجديدة",
 
-    "passwordError":"كلمه السر مطلوبة",
     "phoneOrEmailError":"رقم الهاتف / البريد الإلكتروني مطلوب",
     "verificationCodeError":"رمز التحقق الخاص بك مطلوب",
 

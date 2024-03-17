@@ -1,50 +1,33 @@
 class UserModel {
-  dynamic parentsId;
-  dynamic parentsName;
-  dynamic parentsCountryCode;
-  dynamic parentsPhone;
-  dynamic parentsEmail;
-  dynamic parentsAddress;
-  dynamic parentsBirthdate;
-  dynamic parentsGender;
-  dynamic parentsImage;
-  dynamic parentsStatus;
-  dynamic phoneVerified;
-  dynamic emailVerified;
-  dynamic parentsCreatedAt;
-  dynamic parentsUpdatedAt;
+  Data? data;
+  Result? result;
 
-  UserModel({
-    this.parentsId,
-    this.parentsName,
-    this.parentsCountryCode,
-    this.parentsPhone,
-    this.parentsEmail,
-    this.parentsAddress,
-    this.parentsBirthdate,
-    this.parentsGender,
-    this.parentsImage,
-    this.parentsStatus,
-    this.phoneVerified,
-    this.emailVerified,
-    this.parentsCreatedAt,
-    this.parentsUpdatedAt,
-  });
+  UserModel({this.data, this.result});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    parentsId = json['parents_id'];
-    parentsName = json['parents_name'];
-    parentsCountryCode = json['parents_country_code'];
-    parentsPhone = json['parents_phone'];
-    parentsEmail = json['parents_email'];
-    parentsAddress = json['parents_address'];
-    parentsBirthdate = json['parents_birthdate'];
-    parentsGender = json['parents_gender'];
-    parentsImage = json['parents_image'];
-    parentsStatus = json['parents_status'];
-    phoneVerified = json['phone_verified'];
-    emailVerified = json['email_verified'];
-    parentsCreatedAt = json['parents_created_at'];
-    parentsUpdatedAt = json['parents_updated_at'];
+    data = json['Data'] != null ? new Data.fromJson(json['Data']) : null;
+    result = json['Result'] != null ? new Result.fromJson(json['Result']) : null;
+  }
+}
+
+class Data {
+  String? deliveryName;
+
+  Data({this.deliveryName});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    deliveryName = json['DeliveryName'];
+  }
+}
+
+class Result {
+  String? errMsg;
+  int? errNo;
+
+  Result({this.errMsg, this.errNo});
+
+  Result.fromJson(Map<String, dynamic> json) {
+    errMsg = json['ErrMsg'];
+    errNo = json['ErrNo'];
   }
 }

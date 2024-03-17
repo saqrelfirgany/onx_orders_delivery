@@ -129,6 +129,18 @@ abstract class AppLocalizations {
   /// **'Log in'**
   String get login;
 
+  /// No description provided for @userIDRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'User ID Required'**
+  String get userIDRequired;
+
+  /// No description provided for @passwordError.
+  ///
+  /// In en, this message translates to:
+  /// **'Password required'**
+  String get passwordError;
+
   /// No description provided for @goCashless.
   ///
   /// In en, this message translates to:
@@ -1454,12 +1466,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm New password'**
   String get confirmNewPassword;
-
-  /// No description provided for @passwordError.
-  ///
-  /// In en, this message translates to:
-  /// **'Password required'**
-  String get passwordError;
 
   /// No description provided for @phoneOrEmailError.
   ///

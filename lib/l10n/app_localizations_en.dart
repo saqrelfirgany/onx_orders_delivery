@@ -23,6 +23,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Log in';
 
   @override
+  String get userIDRequired => 'User ID Required';
+
+  @override
+  String get passwordError => 'Password required';
+
+  @override
   String get goCashless => 'Go cashless, promote healthy spending.';
 
   @override
@@ -684,9 +690,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmNewPassword => 'Confirm New password';
-
-  @override
-  String get passwordError => 'Password required';
 
   @override
   String get phoneOrEmailError => 'Phone number/email required';

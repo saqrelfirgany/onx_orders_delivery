@@ -26,26 +26,10 @@ class DioHelper {
     // AppConstants.language = await localStorage.getLang;
     /// Set headers
     var headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json'
       // "User-Agent": Platform.operatingSystem,
-      "lang": '$lang',
-      if (Helper.token.isNotEmpty) "Authorization": 'Bearer ${Helper.token}',
-      // if (Helper.token.isNotEmpty)
-      //   "Authorization": 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9'
-      //       '.eyJhdWQiOiI5IiwianRpIjoiYjEyN2NlOWZiNzdmOTc1ODZiNGI2NWI2OGM2ODM5NjYxMjA0ZGMy'
-      //       'MjIzNDAzNWJlOTg5ZjRmYmY1NDE4MmY1YTMyMDY4NjRiMTAxM2Y0NmIiLCJpYXQiOjE3MDE0NjA4M'
-      //       'TkuODc4NDQyMDQ5MDI2NDg5MjU3ODEyNSwibmJmIjoxNzAxNDYwODE5Ljg3ODQ0Mzk1NjM3NTEyMj'
-      //       'A3MDMxMjUsImV4cCI6MTczMzA4MzIxOS44NzU5MjE5NjQ2NDUzODU3NDIxODc1LCJzdWIiOiIxIiw'
-      //       'ic2NvcGVzIjpbXX0.QOcZwG0x5fHv_X9w2s_WQCJmwwhsKc_Le1QkrrztxUZhAJL_fN1GVYQPJuG'
-      //       'EvHihybLZANCrLg6GVwwf8IUxbBeQ8wEE95B8EQK7l_5H66RE0XdQRrgG2JqvQUu_ru9Xwra3zsO'
-      //       'GCOBpJiPnMLuVyOsd4EBHog_SE28cLEVpTj7HvyNij65au58BdiyIBeN5d2wLwTDHbqT34hZ45hThF'
-      //       'N_fkgV4hZBoHrt2y3uuMWAb3mlDrp5eNzEdil9sDDhhVd1ys6EkewHH6e9_GJ8kUab8MnvbAYTTZVZ'
-      //       'a-btCOanMpxr6fvHLVgqSboq6BRid_QVGQmxBiSj1udM4dRGp6bLzg7Vv42jPOBawhx55ZQB1SNe_u'
-      //       'EleZw_RL0mm8Db-C-1_cC7sBv9dNvDQxyUEsNvo155Yh9QIT6eNm-t6Az2cCTOUpbaG9a28om-SP2RX'
-      //       'Vs9Ehv2otm3algkL4yDmO8FbP2vdtoDF57bLh5NaiftcJjrR2ZJVqTBaWEEN6Y89P6OkFGzKTrf4dF2'
-      //       'B_vfvQhNG4gYx4vIlQhWXwi4013QAPUrVSuZigshgvv1alSDE8Jx1VC19RX4ZbcsseMvFg05LLeCEtJ'
-      //       'R46J-SkHRyFhhWKW6EeD-9AgedBOek4Isk8F4yZtQG6tJklE67vxE84r_H5lVDi96HjWItztsxpuQ',
+      // "lang": '$lang',
+      // if (Helper.token.isNotEmpty) "Authorization": 'Bearer ${Helper.token}',
     };
 
     /// Set dio
@@ -55,7 +39,7 @@ class DioHelper {
         followRedirects: true,
         receiveDataWhenStatusError: true,
         // contentType: Headers.jsonContentType,
-        responseType: ResponseType.json,
+        // responseType: ResponseType.json,
         headers: headers,
         connectTimeout: const Duration(seconds: 60),
         // 60 seconds
@@ -105,12 +89,26 @@ class DioHelper {
         return Right(dynamicResponse);
       } else if (response.statusCode == 401) {
         logOutUser(message: dynamicResponse['message']);
-        return Left(FailureModel(message: dynamicResponse['message']));
+        return Left(
+          FailureModel(
+            result: Result.fromJson(dynamicResponse),
+          ),
+        );
       } else {
-        return Left(FailureModel(message: dynamicResponse['message']));
+        return Left(
+          FailureModel(
+            // result: e.result,
+            result: Result.fromJson(dynamicResponse),
+          ),
+        );
       }
     } on DioError catch (e) {
-      return Left(FailureModel(message: 'Please check your internet connection'));
+      return Left(
+        FailureModel(
+          // result: e.result,
+          result: Result(errMsg: 'Please check your internet connection'),
+        ),
+      );
     }
   }
 
@@ -147,38 +145,48 @@ class DioHelper {
         return Right(dynamicResponse);
       } else if (response.statusCode == 401) {
         logOutUser(message: dynamicResponse['message']);
-        return Left(FailureModel(message: dynamicResponse['message']));
+        return Left(
+          FailureModel(
+            result: Result.fromJson(dynamicResponse),
+          ),
+        );
       } else {
         if (dynamicResponse['errors'] != null) {
           if (dynamicResponse['errors'].isNotEmpty) {
             return Left(
               FailureModel(
-                message: dynamicResponse['errors'][0],
-                errors: dynamicResponse['errors'],
+                result: Result.fromJson(dynamicResponse),
               ),
             );
           }
           return Left(
             FailureModel(
-              message: dynamicResponse['message'],
-              statusCode: response.statusCode!,
-              errors: dynamicResponse['errors'],
+              result: Result.fromJson(dynamicResponse),
             ),
           );
         } else {
           return Left(
             FailureModel(
-              message: 'somethingWentWrong',
-              errors: dynamicResponse['errors'],
+              result: Result.fromJson(dynamicResponse),
             ),
           );
         }
       }
     } on DioError catch (e) {
       if (e.error is SocketException) {
-        return Left(FailureModel(message: 'Please check your internet connection'));
+        return Left(
+          FailureModel(
+            // result: e.result,
+            result: Result(errMsg: 'Please check your internet connection'),
+          ),
+        );
       }
-      return Left(FailureModel(message: 'Please check your internet connection'));
+      return Left(
+        FailureModel(
+          // result: e.result,
+          result: Result(errMsg: 'Please check your internet connection'),
+        ),
+      );
     }
   }
 
@@ -195,38 +203,48 @@ class DioHelper {
         return Right(dynamicResponse);
       } else if (response.statusCode == 401) {
         logOutUser(message: dynamicResponse['message']);
-        return Left(FailureModel(message: dynamicResponse['messageasd']));
+        return Left(
+          FailureModel(
+            result: Result.fromJson(dynamicResponse),
+          ),
+        );
       } else {
         if (dynamicResponse['errors'] != null) {
           if (dynamicResponse['errors'].isNotEmpty) {
             return Left(
               FailureModel(
-                message: dynamicResponse['message'],
-                errors: dynamicResponse['errors'],
+                result: Result.fromJson(dynamicResponse),
               ),
             );
           }
           return Left(
             FailureModel(
-              message: dynamicResponse['message'],
-              statusCode: response.statusCode!,
-              errors: dynamicResponse['errors'],
+              result: Result.fromJson(dynamicResponse),
             ),
           );
         } else {
           return Left(
             FailureModel(
-              message: 'somethingWentWrong',
-              errors: dynamicResponse['errors'],
+              result: Result.fromJson(dynamicResponse),
             ),
           );
         }
       }
     } on DioError catch (e) {
       if (e.error is SocketException) {
-        return Left(FailureModel(message: 'Please check your internet connection'));
+        return Left(
+          FailureModel(
+            // result: e.result,
+            result: Result(errMsg: 'Please check your internet connection'),
+          ),
+        );
       }
-      return Left(FailureModel(message: 'Please check your internet connection'));
+      return Left(
+        FailureModel(
+          // result: e.result,
+          result: Result(errMsg: 'Please check your internet connection'),
+        ),
+      );
     }
   }
 
@@ -247,12 +265,25 @@ class DioHelper {
         return Right(dynamicResponse);
       } else if (response.statusCode == 401) {
         logOutUser(message: dynamicResponse['message']);
-        return Left(FailureModel(message: dynamicResponse['message']));
+        return Left(
+          FailureModel(
+            result: Result.fromJson(dynamicResponse),
+          ),
+        );
       } else {
-        return Left(FailureModel(message: dynamicResponse['message']));
+        return Left(
+          FailureModel(
+            result: Result.fromJson(dynamicResponse),
+          ),
+        );
       }
     } on DioError catch (e) {
-      return Left(FailureModel(message: 'Please check your internet connection'));
+      return Left(
+        FailureModel(
+          // result: e.result,
+          result: Result(errMsg: 'Please check your internet connection'),
+        ),
+      );
     }
   }
 }

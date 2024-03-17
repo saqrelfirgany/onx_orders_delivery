@@ -1,13 +1,21 @@
 class FailureModel {
-  dynamic message;
-  dynamic statusCode;
-  dynamic errors;
+  Result? result;
 
-  FailureModel({required this.message, this.statusCode = 0, this.errors = const []});
+  FailureModel({this.result});
 
   FailureModel.fromJson(Map<String, dynamic> json) {
-    message = json['message'];
-    statusCode = json['status'];
-    errors = json['errors'];
+    result = json['Result'] != null ? new Result.fromJson(json['Result']) : null;
+  }
+}
+
+class Result {
+  String? errMsg;
+  String? errNo;
+
+  Result({this.errMsg, this.errNo});
+
+  Result.fromJson(Map<String, dynamic> json) {
+    errMsg = json['ErrMsg'];
+    errNo = json['ErrNo'].toString();
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:saqrelfirgany/core/utils/size_utils.dart';
 
 import '../../../../core/components/loading/main_loaing.dart';
@@ -10,7 +9,6 @@ import '../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../core/widgets/custom_image_view.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../../route/app_route_names.dart';
 import 'body/login_logo_and_language.dart';
 import 'login_cubit.dart';
 
@@ -59,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                       horizontal: 16.h,
                     ),
                     child: CustomTextFormField(
-                      controller: cubit.userNameController,
+                      controller: cubit.userIDController,
                       hintText: l10n.userID,
                       fillColor: inputColor,
                       hintStyle: CustomTextStyles.title14BlackColorRegular,
@@ -77,6 +75,7 @@ class LoginScreen extends StatelessWidget {
                       controller: cubit.passwordController,
                       hintText: l10n.password,
                       fillColor: inputColor,
+                      obscureText: true,
                       hintStyle: CustomTextStyles.title14BlackColorRegular,
                       textInputAction: TextInputAction.done,
                       textInputType: TextInputType.visiblePassword,
@@ -94,8 +93,7 @@ class LoginScreen extends StatelessWidget {
                           child: CustomElevatedButton(
                             text: l10n.login,
                             onPressed: () {
-                              // cubit.onSubmit(context: context);
-                              context.push(AppRouteName.mainScreenRoute);
+                              cubit.onSubmit(context: context);
                             },
                           ),
                         ),

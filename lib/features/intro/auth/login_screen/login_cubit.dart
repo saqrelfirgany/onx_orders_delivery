@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/components/alerts/show_alert_dialog.dart';
 import '../../../../core/dependencies/dependencies.dart';
-import '../../../../core/helper/dio_helper.dart';
 import '../../../../core/helper/helper.dart';
 import '../../../../core/model/failure_model.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -19,7 +18,7 @@ part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginState()) {
-    userNameController.clear();
+    userIDController.clear();
     passwordController.clear();
   }
 
@@ -27,7 +26,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   UserModel userModel = UserModel();
 
-  TextEditingController userNameController = TextEditingController();
+  TextEditingController userIDController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
 
@@ -35,8 +34,8 @@ class LoginCubit extends Cubit<LoginState> {
     final l10n = AppLocalizations.of(context);
 
     List<String> validateMessage = [];
-    if (userNameController.text.isEmpty) {
-      validateMessage.add(l10n.phoneOrEmailError);
+    if (userIDController.text.isEmpty) {
+      validateMessage.add(l10n.userIDRequired);
     }
     if (passwordController.text.isEmpty) {
       validateMessage.add(l10n.passwordError);
@@ -55,13 +54,13 @@ class LoginCubit extends Cubit<LoginState> {
     emit(newState);
     try {
       Either<FailureModel, dynamic> response = await authRepository.login(
-        phone: userNameController.text,
+        userID: userIDController.text,
         password: passwordController.text,
       );
       response.fold(
-        (left) {
+        (failureModel) {
           showAlertDialog(
-            textList: left.errors,
+            text: failureModel.result?.errMsg ?? '',
             press: () => SmartDialog.dismiss(),
           );
           final newState = state.copyWith(
@@ -70,21 +69,19 @@ class LoginCubit extends Cubit<LoginState> {
           emit(newState);
         },
         (right) async {
-          if (right['status'] == 200) {
-            Helper.token = right['data']['token']['access_token'];
+          if (right['Data'].isNotEmpty) {
             Helper.isLoggedIn = true;
             Helper.saveUserLogged(true);
-            Helper.saveUserToken(right['data']['token']['access_token']);
-            await DioHelper.init();
-            userModel = UserModel.fromJson(right['data']['parent']);
-            context.push(AppRouteName.mainScreenRoute);
-            userNameController.clear();
+            userModel = UserModel.fromJson(right);
+            context.push(AppRouteName.homeScreenRoute);
+            userIDController.clear();
             passwordController.clear();
+            authRepository.setUserModel(model: userModel);
           } else {
             FailureModel failureModel = FailureModel.fromJson(right);
             showAlertDialog(
               height: 200,
-              textList: failureModel.errors,
+              text: failureModel.result?.errMsg ?? '',
               press: () => SmartDialog.dismiss(),
             );
           }

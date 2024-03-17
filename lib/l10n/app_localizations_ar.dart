@@ -23,6 +23,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
+  String get userIDRequired => 'رقم المستخدم مطلوب';
+
+  @override
+  String get passwordError => 'كلمه السر مطلوبة';
+
+  @override
   String get goCashless => 'اتجه لعدم استخدام النقد، وتعزيز الإنفاق الصحي.';
 
   @override
@@ -684,9 +690,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get confirmNewPassword => 'تأكيد كلمة المرور الجديدة';
-
-  @override
-  String get passwordError => 'كلمه السر مطلوبة';
 
   @override
   String get phoneOrEmailError => 'رقم الهاتف / البريد الإلكتروني مطلوب';
