@@ -133,32 +133,20 @@ flutter:
 
   assets:
     - assets/
+    - assets/home/
     - assets/icons/
     - assets/images/
+    - assets/login/
     - assets/lottie/
-    - assets/contacts_icons/
+    - assets/splash/
 
   fonts:
-    - family: Poppins
+    - family: MontserratSemiBold
       fonts:
-        - asset: assets/fonts/PoppinsRegular.ttf
-          weight: 400
-        - asset: assets/fonts/PoppinsMedium.ttf
-          weight: 500
-        - asset: assets/fonts/PoppinsSemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/PoppinsBold.ttf
-          weight: 700
-        - asset: assets/fonts/PoppinsLight.ttf
-          weight: 300
-    - family: Inter
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+    - family: MontserratMedium
       fonts:
-        - asset: assets/fonts/InterRegular.ttf
-          weight: 400
-    - family: Roboto
+        - asset: assets/fonts/Montserrat-Medium.ttf
+    - family: MontserratRegular
       fonts:
-        - asset: assets/fonts/RobotoRegular.ttf
-          weight: 400
-    - family: SF Arabic Regular
-      fonts:
-        - asset: assets/fonts/SFArabicRegular.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf

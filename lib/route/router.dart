@@ -11,11 +11,7 @@ import '../features/c_parent/logged_in_devices_screen/logged_in_devices_screen.d
 import '../features/c_parent/parent_profile/parent_profile_screen.dart';
 import '../features/c_parent/phone_number_screen/phone_number_screen.dart';
 import '../features/c_parent/settings_screen/settings_screen.dart';
-import '../features/intro/auth/forget_check_exist_screen/forget_check_exist_screen.dart';
 import '../features/intro/auth/login_screen/login_screen.dart';
-import '../features/intro/auth/reset_pass_screen/reset_pass_screen.dart';
-import '../features/intro/auth/virfaction_forget/virfaction_forget.dart';
-import '../features/intro/onboarding_screen/onboarding_screen.dart';
 import '../features/intro/splash_screen/splash_screen.dart';
 import '../features/main_screen/main_screen.dart';
 import '../main.dart';
@@ -36,11 +32,7 @@ final GoRouter router = GoRouter(
       path: AppRouteName.splashScreenRoute,
       builder: (context, state) => const SplashScreen(),
     ),
-    GoRoute(
-      path: AppRouteName.onBoardingScreenRoute,
-      redirect: (context, state) => Helper.token.isEmpty ? null : AppRouteName.mainScreenRoute,
-      builder: (context, state) => const OnBoardingScreen(),
-    ),
+
     GoRoute(
       path: AppRouteName.mainScreenRoute,
       builder: (context, state) => const MainScreen(),
@@ -90,19 +82,6 @@ final GoRouter router = GoRouter(
       path: AppRouteName.loginScreenRoute,
       builder: (context, state) => const LoginScreen(),
       redirect: (context, state) => Helper.token.isNotEmpty ? AppRouteName.loginScreenRoute : null,
-    ),
-
-    GoRoute(
-      path: AppRouteName.forgetPasswordScreenRoute,
-      builder: (context, state) => ForgetCheckExistScreen(),
-    ),
-    GoRoute(
-      path: AppRouteName.vitrificationForgetScreenRoute,
-      builder: (context, state) => VitrificationForgetScreen(),
-    ),
-    GoRoute(
-      path: AppRouteName.resetPassScreenRoute,
-      builder: (context, state) => ResetPassScreen(),
     ),
   ],
 );
