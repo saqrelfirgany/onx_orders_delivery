@@ -6,6 +6,8 @@
     "login": "تسجيل الدخول",
     "userIDRequired":"رقم المستخدم مطلوب",
     "passwordError":"كلمه السر مطلوبة",
+    "newTitle":"جديد",
+    "others":"أخرى",
 
     "enterInvoiceNumber": "أدخل رقم الفاتورة الخاصة بك",
     "invoiceNumber": "رقم الفاتورة",

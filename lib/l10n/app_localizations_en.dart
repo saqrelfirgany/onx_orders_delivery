@@ -29,6 +29,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordError => 'Password required';
 
   @override
+  String get newTitle => 'New';
+
+  @override
+  String get others => 'Others';
+
+  @override
   String get goCashless => 'Go cashless, promote healthy spending.';
 
   @override

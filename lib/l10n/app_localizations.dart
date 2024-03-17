@@ -141,6 +141,18 @@ abstract class AppLocalizations {
   /// **'Password required'**
   String get passwordError;
 
+  /// No description provided for @newTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get newTitle;
+
+  /// No description provided for @others.
+  ///
+  /// In en, this message translates to:
+  /// **'Others'**
+  String get others;
+
   /// No description provided for @goCashless.
   ///
   /// In en, this message translates to:

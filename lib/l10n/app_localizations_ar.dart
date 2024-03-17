@@ -29,6 +29,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordError => 'كلمه السر مطلوبة';
 
   @override
+  String get newTitle => 'جديد';
+
+  @override
+  String get others => 'أخرى';
+
+  @override
   String get goCashless => 'اتجه لعدم استخدام النقد، وتعزيز الإنفاق الصحي.';
 
   @override

@@ -20,6 +20,22 @@ class CustomTextStyles {
     );
   }
 
+  static get title14WhiteColorSemiBold {
+    return TextStyle(
+      fontSize: 14.fSize,
+      color: whiteColor,
+      fontFamily: 'MontserratSemiBold',
+    );
+  }
+
+  static get title14MainColorSemiBold {
+    return TextStyle(
+      fontSize: 14.fSize,
+      color: mainColor,
+      fontFamily: 'MontserratSemiBold',
+    );
+  }
+
   static get title12MainColorMedium {
     return TextStyle(
       fontSize: 12.fSize,

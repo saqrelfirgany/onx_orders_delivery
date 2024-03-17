@@ -3,11 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:saqrelfirgany/features/a_home/home_screen/body/explore_search_toggle_button.dart';
 
-import '../../../core/components/app_bar/home_app_bar.dart';
 import '../../../core/components/loading/main_loaing.dart';
 import '../../../core/dependencies/dependencies.dart';
-import '../../../core/theme/app_decoration.dart';
 import '../../../core/theme/custom_text_style.dart';
 import '../../../core/utils/size_utils.dart';
 import '../../../core/widgets/custom_elevated_button.dart';
@@ -39,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   TextEditingController passwordController = TextEditingController();
 
-  bool englishLabel = false;
+  bool isNewIndex = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,73 +57,84 @@ class _HomeScreenState extends State<HomeScreen> {
           return Scaffold(
             key: scaffoldKey,
             extendBody: true,
-            appBar: HomeAppBar(title: l10n.storekeeper),
-            // drawer: const Menu(),
             body: state.isLoadingProjects
                 ? const CenterMainLoading()
-                : SafeArea(
-                    child: Container(
-                      width: double.maxFinite,
-                      decoration: AppDecoration.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: 15.h,
-                          right: 15.h,
-                          top: 24.v,
-                          bottom: 5.v,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(height: 16.v),
-                            CustomImageView(
-                              imagePath: 'assets/app_logo.png',
-                              height: 160.adaptSize,
-                              width: 160.adaptSize,
-                              radius: BorderRadius.circular(80.h),
-                            ),
-                            SizedBox(height: 36.v),
-                            Row(
-                              children: [
-                                Text(
-                                  l10n.enterInvoiceNumber,
-                                  style: CustomTextStyles.titleLargeBluegray70001,
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 18.v),
-                            CustomTextFormField(
-                              controller: TextEditingController(),
-                              hintText: l10n.invoiceNumber,
-                              textInputAction: TextInputAction.done,
-                              textInputType: TextInputType.number,
-                              prefix: Container(
-                                margin: EdgeInsets.fromLTRB(
-                                  16.h,
-                                  19.v,
-                                  10.h,
-                                  19.v,
-                                ),
-                                child: Icon(Icons.numbers),
-                              ),
-                              prefixConstraints: BoxConstraints(
-                                maxHeight: 58.v,
-                              ),
-                            ),
-                            SizedBox(height: 24.v),
-                            CustomElevatedButton(
-                              text: l10n.newInvoice,
-                              onPressed: () {
-                                // cubit.onSubmit(context: context);
-                                context.push(AppRouteName.newInvoiceScreenRoute);
-                              },
-                            ),
-                            Spacer(flex: 2),
-                          ],
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      /// Home Logo
+                      CustomImageView(
+                        imagePath: 'assets/home/home_topbar_3x.png',
+                        width: double.infinity,
+                        height: 150.v,
+                        fit: BoxFit.cover,
+                        radius: BorderRadius.only(
+                          bottomLeft: Radius.circular(22.adaptSize),
                         ),
                       ),
-                    ),
+                      SizedBox(height: 16.v),
+                      Material(
+                        elevation: 2,
+                        borderRadius: BorderRadius.circular(18.adaptSize),
+                        child: Container(
+                          width: 220.h,
+                          height: 36.v,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ExploreSearchToggleButton(
+                                isActive: true,
+                                title: l10n.newTitle,
+                                onPressed: () {},
+                              ),
+                              ExploreSearchToggleButton(
+                                isActive: false,
+                                title: l10n.others,
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 58.v),
+                      Row(
+                        children: [
+                          Text(
+                            l10n.enterInvoiceNumber,
+                            style: CustomTextStyles.titleLargeBluegray70001,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 18.v),
+                      CustomTextFormField(
+                        controller: TextEditingController(),
+                        hintText: l10n.invoiceNumber,
+                        textInputAction: TextInputAction.done,
+                        textInputType: TextInputType.number,
+                        prefix: Container(
+                          margin: EdgeInsets.fromLTRB(
+                            16.h,
+                            19.v,
+                            10.h,
+                            19.v,
+                          ),
+                          child: Icon(Icons.numbers),
+                        ),
+                        prefixConstraints: BoxConstraints(
+                          maxHeight: 58.v,
+                        ),
+                      ),
+                      SizedBox(height: 24.v),
+                      CustomElevatedButton(
+                        text: l10n.newInvoice,
+                        onPressed: () {
+                          // cubit.onSubmit(context: context);
+                          context.push(AppRouteName.newInvoiceScreenRoute);
+                        },
+                      ),
+                      Spacer(flex: 2),
+                    ],
                   ),
           );
         },

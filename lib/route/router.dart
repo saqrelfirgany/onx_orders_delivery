@@ -33,7 +33,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRouteName.loginScreenRoute,
       builder: (context, state) => const LoginScreen(),
-      redirect: (context, state) => Helper.token.isNotEmpty ? AppRouteName.loginScreenRoute : null,
+      redirect: (context, state) => Helper.isLoggedIn ? AppRouteName.homeScreenRoute : null,
     ),
   ],
 );

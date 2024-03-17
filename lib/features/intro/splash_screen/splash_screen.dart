@@ -3,12 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/controllers/language_cubit.dart';
-import '../../../core/dependencies/dependencies.dart';
 import '../../../core/helper/dio_helper.dart';
 import '../../../core/helper/helper.dart';
 import '../../../core/utils/size_utils.dart';
 import '../../../core/widgets/custom_image_view.dart';
-import '../../../repositories/initial_repo.dart';
 import '../../../route/app_route_names.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -50,19 +48,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> navigateToNextScreen() async {
     final languageCubit = context.read<LanguageCubit>();
-    final InitialRepository initialRepository = serviceLocator<InitialRepository>();
     await Helper.getUserLang();
+    Helper.isLoggedIn = await Helper.getUserLogged();
+
     DioHelper.init(lang: languageCubit.local);
     context.go(AppRouteName.loginScreenRoute);
-
-    // initialRepository.getContactsData();
-    // initialRepository.getInfoData();
-    // context.go(AppRouteName.RFIDScreenRoute);
-    // if (Helper.token.isNotEmpty) {
-    //   context.go(AppRouteName.homeScreenRoute);
-    // } else {
-    //
-    // }
   }
 
   @override
