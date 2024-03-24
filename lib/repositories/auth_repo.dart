@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:either_dart/either.dart';
 import 'package:saqrelfirgany/core/helper/helper.dart';
 import 'package:saqrelfirgany/features/intro/auth/models/request_login_model.dart';
@@ -29,9 +27,6 @@ class AuthRepository {
     );
     var data = requestLoginModel.toJson();
 
-    var data2 = json.encode({
-      "Value": {"P_LANG_NO": "1", "P_DLVRY_NO": "1010", "P_PSSWRD": "1"}
-    });
     final response = await DioHelper.post(
       url: AppConstants.loginEndPoint,
       data: data,

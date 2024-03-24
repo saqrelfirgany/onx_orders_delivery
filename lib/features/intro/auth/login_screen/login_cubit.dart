@@ -77,6 +77,7 @@ class LoginCubit extends Cubit<LoginState> {
             userIDController.clear();
             passwordController.clear();
             authRepository.setUserModel(model: userModel);
+            Helper.saveUser(userModel);
           } else {
             FailureModel failureModel = FailureModel.fromJson(right);
             showAlertDialog(

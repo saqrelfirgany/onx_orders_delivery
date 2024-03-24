@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../features/intro/auth/models/user_model.dart';
 
 class Helper {
   static String token = '';
@@ -7,6 +11,7 @@ class Helper {
   static String lang = 'en';
 
   static String userLoggedKey = 'IsLoggedIn';
+  static String userModelKey = 'userModelKey';
   static String userTokenKey = 'UserToken';
   static String userLangKey = 'userLang';
 
@@ -15,6 +20,21 @@ class Helper {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return await prefs.setBool(userLoggedKey, isLoggedIn);
+  }
+
+  /// Save User Logged
+  static Future<bool> saveUser(UserModel userModel) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    dynamic dynamicResponse = await jsonEncode(userModel.toJson());
+
+    return await prefs.setString(userModelKey, dynamicResponse);
+  }
+
+  /// Get User Logged
+  static getUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return prefs.get(userModelKey);
   }
 
   /// Get User Logged

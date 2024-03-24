@@ -20,11 +20,51 @@ class CustomTextStyles {
     );
   }
 
+  static get title25WhiteColorSemiBold {
+    return TextStyle(
+      fontSize: 25.fSize,
+      color: whiteColor,
+      fontFamily: 'MontserratSemiBold',
+    );
+  }
+
   static get title14WhiteColorSemiBold {
     return TextStyle(
       fontSize: 14.fSize,
       color: whiteColor,
       fontFamily: 'MontserratSemiBold',
+    );
+  }
+
+  static get title16GreenColorMedium {
+    return TextStyle(
+      fontSize: 16.fSize,
+      color: greenColor,
+      fontFamily: 'MontserratSemiBold',
+    );
+  }
+
+  static get title16GrayColorMedium {
+    return TextStyle(
+      fontSize: 16.fSize,
+      color: grayColor,
+      fontFamily: 'MontserratSemiBold',
+    );
+  }
+
+  static get title12GrayColorMedium {
+    return TextStyle(
+      fontSize: 12.fSize,
+      color: grayColor,
+      fontFamily: 'MontserratMedium',
+    );
+  }
+
+  static get title10GrayColorMedium {
+    return TextStyle(
+      fontSize: 10.fSize,
+      color: grayColor,
+      fontFamily: 'MontserratMedium',
     );
   }
 
@@ -55,6 +95,14 @@ class CustomTextStyles {
   static get title14WhiteColorMedium {
     return TextStyle(
       fontSize: 14.fSize,
+      color: whiteColor,
+      fontFamily: 'MontserratMedium',
+    );
+  }
+
+  static get title8WhiteColorMedium {
+    return TextStyle(
+      fontSize: 8.fSize,
       color: whiteColor,
       fontFamily: 'MontserratMedium',
     );

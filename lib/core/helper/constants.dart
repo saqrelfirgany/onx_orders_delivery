@@ -40,4 +40,5 @@ class AppConstants {
 
   /// login EndPoint
   static const String loginEndPoint = '/OnyxDeliveryService/Service.svc/CheckDeliveryLogin';
+  static const String homeEndPoint = '/OnyxDeliveryService/Service.svc/GetDeliveryBillsItems';
 }

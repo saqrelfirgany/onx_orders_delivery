@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/dependencies/dependencies.dart';
 import '../../../core/enum/submission_status.dart';
 import '../../../core/model/failure_model.dart';
+import '../../../repositories/auth_repo.dart';
 import '../../../repositories/home_repo.dart';
 import '../models/home_model.dart';
 
@@ -15,7 +16,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(const HomeState()) {
     // log('HomeCubit');
-    // init();
+    init();
   }
 
   Future<void> init() async {
@@ -24,6 +25,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   final HomeRepository homeRepository = serviceLocator<HomeRepository>();
+  final AuthRepository authRepository = serviceLocator<AuthRepository>();
 
   HomeModel homeModel = HomeModel();
 
@@ -43,15 +45,7 @@ class HomeCubit extends Cubit<HomeState> {
           // );
         },
         (right) async {
-          if (right['status'] == 200) {
-            homeModel = HomeModel.fromJson(right['data']);
-          } else {
-            // FailureModel failureModel = FailureModel.fromJson(right);
-            // showAlertDialog(
-            //   textList: failureModel.errors,
-            //   press: () => SmartDialog.dismiss(),
-            // );
-          }
+          homeModel = HomeModel.fromJson(right);
         },
       );
     } catch (error) {

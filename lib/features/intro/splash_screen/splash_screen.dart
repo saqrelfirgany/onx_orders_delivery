@@ -1,13 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/controllers/language_cubit.dart';
+import '../../../core/dependencies/dependencies.dart';
 import '../../../core/helper/dio_helper.dart';
 import '../../../core/helper/helper.dart';
 import '../../../core/utils/size_utils.dart';
 import '../../../core/widgets/custom_image_view.dart';
+import '../../../repositories/auth_repo.dart';
 import '../../../route/app_route_names.dart';
+import '../auth/models/user_model.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -49,8 +54,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> navigateToNextScreen() async {
     final languageCubit = context.read<LanguageCubit>();
     await Helper.getUserLang();
-    Helper.isLoggedIn = await Helper.getUserLogged();
+    Helper.isLoggedIn = await Helper.getUserLogged() ?? false;
+    final AuthRepository authRepository = serviceLocator<AuthRepository>();
 
+    if (Helper.isLoggedIn) {
+      var userData = await Helper.getUser();
+      if (userData != null) {
+        dynamic dynamicResponse = await jsonDecode(userData);
+        authRepository.userModel = UserModel.fromJson(dynamicResponse);
+      }
+    }
     DioHelper.init(lang: languageCubit.local);
     context.go(AppRouteName.loginScreenRoute);
   }

@@ -1,7 +1,12 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:go_router/go_router.dart';
+import 'package:saqrelfirgany/route/app_route_names.dart';
 import 'package:saqrelfirgany/route/router.dart';
 
 import 'core/controllers/language_cubit.dart';
@@ -42,15 +47,46 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   final LanguageCubit languageCubit = serviceLocator<LanguageCubit>();
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
+    _startTimer();
+    WidgetsBinding.instance.addObserver(this);
   }
 
-// Initialize notifications
+  @override
+  void dispose() {
+    // WidgetsBinding.instance.removeObserver(this);
+    // _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    _timer = Timer(Duration(seconds: 10), _logoutUser);
+  }
+
+  void _logoutUser() {
+    log('_logoutUser');
+    // Navigate to the login screen
+    navigatorKey.currentState!.context.go(AppRouteName.loginScreenRoute);
+    // Navigator.of(context).pushReplacementNamed(AppRouteName.loginScreenRoute);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
+      _startTimer();
+    } else if (state == AppLifecycleState.resumed) {
+      _startTimer();
+    }
+  }
+
+  // Initialize notifications
   void initNotifications() async {
     FirebaseNotifications.initNotifications(context: context);
     await FirebaseNotifications.firebaseMessaging.getToken();

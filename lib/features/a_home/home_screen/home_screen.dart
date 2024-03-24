@@ -2,19 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:saqrelfirgany/features/a_home/home_screen/body/explore_search_toggle_button.dart';
 
 import '../../../core/components/loading/main_loaing.dart';
 import '../../../core/dependencies/dependencies.dart';
-import '../../../core/theme/custom_text_style.dart';
 import '../../../core/utils/size_utils.dart';
-import '../../../core/widgets/custom_elevated_button.dart';
-import '../../../core/widgets/custom_image_view.dart';
-import '../../../core/widgets/custom_text_form_field.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../repositories/home_repo.dart';
-import '../../../route/app_route_names.dart';
+import 'body/home_logo.dart';
+import 'body/home_screen_list.dart';
 import 'home_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   TextEditingController passwordController = TextEditingController();
 
-  bool isNewIndex = false;
+  bool isNewIndex = true;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, state) {
           final cubit = context.read<HomeCubit>();
           log('state ${state.submissionStatus}');
+          log('cubit homeModel length::${cubit.homeModel.data?.deliveryBills?.length ?? 0}');
 
           return Scaffold(
             key: scaffoldKey,
@@ -64,15 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       /// Home Logo
-                      CustomImageView(
-                        imagePath: 'assets/home/home_topbar_3x.png',
-                        width: double.infinity,
-                        height: 150.v,
-                        fit: BoxFit.cover,
-                        radius: BorderRadius.only(
-                          bottomLeft: Radius.circular(22.adaptSize),
-                        ),
-                      ),
+                      HomeLogo(cubit: cubit),
                       SizedBox(height: 16.v),
                       Material(
                         elevation: 2,
@@ -84,56 +73,29 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ExploreSearchToggleButton(
-                                isActive: true,
+                                isActive: isNewIndex,
                                 title: l10n.newTitle,
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    isNewIndex = true;
+                                  });
+                                },
                               ),
                               ExploreSearchToggleButton(
-                                isActive: false,
+                                isActive: !isNewIndex,
                                 title: l10n.others,
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    isNewIndex = false;
+                                  });
+                                },
                               ),
                             ],
                           ),
                         ),
                       ),
                       SizedBox(height: 58.v),
-                      Row(
-                        children: [
-                          Text(
-                            l10n.enterInvoiceNumber,
-                            style: CustomTextStyles.titleLargeBluegray70001,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 18.v),
-                      CustomTextFormField(
-                        controller: TextEditingController(),
-                        hintText: l10n.invoiceNumber,
-                        textInputAction: TextInputAction.done,
-                        textInputType: TextInputType.number,
-                        prefix: Container(
-                          margin: EdgeInsets.fromLTRB(
-                            16.h,
-                            19.v,
-                            10.h,
-                            19.v,
-                          ),
-                          child: Icon(Icons.numbers),
-                        ),
-                        prefixConstraints: BoxConstraints(
-                          maxHeight: 58.v,
-                        ),
-                      ),
-                      SizedBox(height: 24.v),
-                      CustomElevatedButton(
-                        text: l10n.newInvoice,
-                        onPressed: () {
-                          // cubit.onSubmit(context: context);
-                          context.push(AppRouteName.newInvoiceScreenRoute);
-                        },
-                      ),
-                      Spacer(flex: 2),
+                      HomeScreenList(cubit: cubit, isNewIndex: isNewIndex),
                     ],
                   ),
           );
